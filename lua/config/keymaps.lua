@@ -1,31 +1,55 @@
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
-
 local map = LazyVim.safe_keymap_set
-
--- Insert模式下的bash风格键位映射
-map("i", "<C-a>", "<ESC>^i")
-map("i", "<C-e>", "<End>")
-map("i", "<C-h>", "<BS>")
-map("i", "<C-b>", "<Left>")
-map("i", "<C-f>", "<Right>")
-map("i", "<C-d>", "<Del>")
-map("i", "<C-o>", "<C-\\><C-o>O")
-map("n", "<ESC>", "<cmd>noh<CR>")
-
--- 窗口切换（仅在非VSCode环境下）
--- 基础键位设置
 local opts = {
     noremap = true,
     silent = true
 }
 
-map("i", "jj", "<ESC>", opts)
--- Insert模式下使用jk���并保存
-map("i", "jk", "<ESC>:w<CR>", opts)
+vim.keymap.set("i", "<C-a>", "<ESC>^i")
+vim.keymap.set("i", "<C-e>", "<End>")
+vim.keymap.set("i", "<C-h>", "<BS>")
+vim.keymap.set("i", "<C-b>", "<Left>")
+vim.keymap.set("i", "<C-f>", "<Right>")
+vim.keymap.set("i", "<C-d>", "<Del>")
+vim.keymap.set("i", "<C-o>", "<C-\\><C-o>O")
+vim.keymap.set("n", "<ESC>", "<cmd>noh<CR>")
 
+-- 选择模式退出
+vim.keymap.set("n", "<Space>", "<Esc>", opts)
+vim.keymap.set("s", "<Space>", "<Esc>", opts)
+vim.keymap.set("x", "<Space>", "<Esc>", opts)
 
--- 保存文件
-map("n", "<D-s>", ":w<CR>", opts)
-map("i", "<D-s>", "<Esc>:w<CR>", opts)
+vim.keymap.set("i", "jj", "<ESC>", opts)
+vim.keymap.set("i", "jk", "<ESC>:w<CR>", opts)
+vim.keymap.set("n", "<D-s>", ":w<CR>", opts)
+vim.keymap.set("i", "<D-s>", "<Esc>:w<CR>", opts)
+
+-- 文件树快捷键 (使用 Snacks Explorer - 項目根目錄)
+vim.keymap.set("n", "<D-b>", function()
+    Snacks.explorer({
+        cwd = LazyVim.root()
+    })
+end, opts)
+
+-- VSCode 風格快捷鍵
+-- Command+P: 快速搜索文件 (使用 Snacks Picker)
+vim.keymap.set("n", "<D-p>", function()
+    Snacks.picker.files({
+        cwd = LazyVim.root()
+    })
+end, {
+    desc = "Find Files (Root Dir)",
+    noremap = true,
+    silent = true
+})
+
+-- Command+Shift+P: 命令面板 (使用 Snacks Picker)
+vim.keymap.set("n", "<D-S-p>", function()
+    Snacks.picker.commands()
+end, {
+    desc = "Command Palette",
+    noremap = true,
+    silent = true
+})
