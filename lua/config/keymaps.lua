@@ -53,3 +53,5 @@ end, {
     noremap = true,
     silent = true
 })
+
+vim.keymap.set("n", "<D-w>", ":bdelete!<CR>", opts) -- 关闭当前buffer
