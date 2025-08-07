@@ -55,3 +55,40 @@ end, {
 })
 
 vim.keymap.set("n", "<D-w>", ":bdelete!<CR>", opts) -- 关闭当前buffer
+
+-- 添加简化的文本操作映射
+local operators = {"c", "d", "y", "v"}
+local text_objects = {
+    -- 基础文本对象
+    q = "aq", -- '"
+    w = "aw", -- word
+    e = "ae", -- case
+    o = "io", -- return
+    t = "at", -- tag
+    p = "aa", -- 段落 
+    u = "au", -- call
+    m = "am", -- 参数
+    b = "ab", -- 括号
+    g = "ag", -- all
+    ['"'] = 'i"', -- 引号
+    ["'"] = "i'", -- 单引号
+    ["`"] = "i`", -- 反引号
+    ["("] = "i(", -- 圆括号
+    [")"] = "i)",
+    ["{"] = "i{", -- 大括号
+    ["}"] = "i}",
+    ["["] = "i[", -- 方括号
+    ["]"] = "i]",
+    ["<"] = "i<", -- 尖括号
+    [">"] = "i>"
+}
+
+-- 为每个操作符和文本对象创建映射
+for _, operator in ipairs(operators) do
+    for key, mapping in pairs(text_objects) do
+        vim.keymap.set("n", operator .. key, operator .. mapping, {
+            silent = true,
+            remap = true
+        })
+    end
+end
