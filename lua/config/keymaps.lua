@@ -92,3 +92,7 @@ for _, operator in ipairs(operators) do
         })
     end
 end
+
+-- Terminal Mappings
+map("n", "<D-j>",      function() Snacks.terminal(nil, { cwd = LazyVim.root() }) end, { desc = "Terminal (Root Dir)" })
+map("t", "<D-j>", "<cmd>close<cr>", { desc = "Hide Terminal" })
