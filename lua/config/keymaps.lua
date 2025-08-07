@@ -104,3 +104,10 @@ end, {
 map("t", "<D-j>", "<cmd>close<cr>", {
     desc = "Hide Terminal"
 })
+
+map("n", "M", "<cmd>bprevious<cr>", opts)
+map("n", "m", "<cmd>bnext<cr>", opts)
+if vim.g.vscode then
+    vim.keymap.set('n', "M", "<Cmd>call VSCodeNotify('workbench.action.previousEditorInGroup')<CR>", opts)
+    vim.keymap.set('n', "m", "<Cmd>call VSCodeNotify('workbench.action.nextEditorInGroup')<CR>", opts)
+end
