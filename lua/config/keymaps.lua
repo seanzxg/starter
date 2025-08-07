@@ -54,7 +54,7 @@ end, {
     silent = true
 })
 
-vim.keymap.set("n", "<D-w>", ":bdelete!<CR>", opts) -- 关闭当前buffer
+vim.keymap.set("n", "<D-w>", "<cmd>:bdelete!<CR>", opts) -- 关闭当前buffer
 
 -- 添加简化的文本操作映射
 local operators = {"c", "d", "y", "v"}
@@ -94,5 +94,13 @@ for _, operator in ipairs(operators) do
 end
 
 -- Terminal Mappings
-map("n", "<D-j>",      function() Snacks.terminal(nil, { cwd = LazyVim.root() }) end, { desc = "Terminal (Root Dir)" })
-map("t", "<D-j>", "<cmd>close<cr>", { desc = "Hide Terminal" })
+map("n", "<D-j>", function()
+    Snacks.terminal(nil, {
+        cwd = LazyVim.root()
+    })
+end, {
+    desc = "Terminal (Root Dir)"
+})
+map("t", "<D-j>", "<cmd>close<cr>", {
+    desc = "Hide Terminal"
+})
