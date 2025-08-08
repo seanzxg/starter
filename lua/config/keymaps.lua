@@ -111,3 +111,6 @@ if vim.g.vscode then
     vim.keymap.set('n', "M", "<Cmd>call VSCodeNotify('workbench.action.previousEditorInGroup')<CR>", opts)
     vim.keymap.set('n', "m", "<Cmd>call VSCodeNotify('workbench.action.nextEditorInGroup')<CR>", opts)
 end
+
+vim.keymap.set({ 'n', 'v' }, '<S-h>', '^', opts)
+vim.keymap.set({ 'n', 'v' }, '<S-l>', '$', opts)
