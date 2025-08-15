@@ -108,6 +108,7 @@ map("t", "<D-j>", "<cmd>close<cr>", {
 
 map("n", "M", "<cmd>bprevious<cr>", opts)
 map("n", "m", "<cmd>bnext<cr>", opts)
+
 if vim.g.vscode then
     vim.keymap.set('n', "M", "<Cmd>call VSCodeNotify('workbench.action.previousEditorInGroup')<CR>", opts)
     vim.keymap.set('n', "m", "<Cmd>call VSCodeNotify('workbench.action.nextEditorInGroup')<CR>", opts)
@@ -115,9 +116,10 @@ if vim.g.vscode then
     -- vim.keymap.set('n', "M", "<Cmd>call VSCodeNotify('workbench.action.splitEditorDown')<CR>", opts)
     -- vim.keymap.set('n', "m", "<Cmd>call VSCodeNotify('workbench.action.splitEditorRight')<CR>", opts)
 
-    -- vim.keymap.set('n', "M", "<Cmd>call VSCodeNotify('jumpToNextSnippetPlaceholder')<CR>", opts)
-    -- vim.keymap.set('n', "m", "<Cmd>call VSCodeNotify('jumpToPrevSnippetPlaceholder')<CR>", opts)
+    vim.keymap.set('i', "<C-j>", "<Cmd>call VSCodeNotify('jumpToNextSnippetPlaceholder')<CR>", opts)
+    vim.keymap.set('i', "<C-k>", "<Cmd>call VSCodeNotify('jumpToPrevSnippetPlaceholder')<CR>", opts)
     
+    vim.keymap.set('n', "<leader>.", "<Cmd>call VSCodeNotify('workbench.action.reloadWindow')<CR>", opts)
 end
 
 vim.keymap.set({ 'n', 'v' }, '<S-h>', '^', opts)
