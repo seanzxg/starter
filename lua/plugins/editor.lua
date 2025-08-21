@@ -7,11 +7,11 @@ return {{
 }, {
     "folke/flash.nvim",
     opts = {
-        -- modes = {
-        --     char = {
-        --         enabled = false -- 禁用默认的 char 模式，这通常使用 s 键
-        --     }
-        -- },
+        modes = {
+            char = {
+                enabled = false -- 禁用默认的 char 模式，这通常使用 s 键
+            }
+        },
         label = {
             uppercase = false
         },

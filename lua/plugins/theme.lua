@@ -1,10 +1,11 @@
-return { -- add gruvbox
-{
-    "ellisonleao/gruvbox.nvim",
-    config = function()
-        vim.cmd([[colorscheme gruvbox]])
-    end
-}, {
+return {
+    -- add gruvbox
+    {
+    --     "ellisonleao/gruvbox.nvim",
+    --     config = function()
+    --         vim.cmd([[colorscheme gruvbox]])
+    --     end
+    -- }, {
     "folke/snacks.nvim",
     opts = {
         dashboard = {
