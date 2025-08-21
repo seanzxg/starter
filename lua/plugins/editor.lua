@@ -7,19 +7,35 @@ return {{
 }, {
     "folke/flash.nvim",
     opts = {
-        modes = {
-            char = {
-                enabled = false -- 禁用默认的 char 模式，这通常使用 s 键
-            }
-        }
+        -- modes = {
+        --     char = {
+        --         enabled = false -- 禁用默认的 char 模式，这通常使用 s 键
+        --     }
+        -- },
+        label = {
+            uppercase = false
+        },
     },
     keys = { -- 明确禁用默认的 s 键
     {"s", false}, {"S", false}, -- 设置我们想要的键位映射
+    {"t", false}, {"T", false}, -- 设置我们想要的键位映射
     {
         "f",
         mode = {"n", "x", "o"},
         function()
-            require("flash").jump()
+            require("flash").jump({
+               search = { forward = true, wrap = false, multi_window = false },
+            })
+        end,
+        desc = "Flash Jump"
+    },
+    {
+        "t",
+        mode = {"n", "x", "o"},
+        function()
+            require("flash").jump({
+                search = { forward = false, wrap = false, multi_window = false },
+            })
         end,
         desc = "Flash Jump"
     }, {
@@ -30,14 +46,7 @@ return {{
         end,
         desc = "Flash Treesitter"
     }, {
-        "r",
-        mode = "o",
-        function()
-            require("flash").remote()
-        end,
-        desc = "Remote Flash"
-    }, {
-        "R",
+        "T",
         mode = {"o", "x"},
         function()
             require("flash").treesitter_search()
