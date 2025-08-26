@@ -20,6 +20,7 @@ vim.keymap.set("n", "<ESC>", "<cmd>noh<CR>")
 vim.keymap.set("n", "<Space>", "<Esc>", opts)
 vim.keymap.set("s", "<Space>", "<Esc>", opts)
 vim.keymap.set("x", "<Space>", "<Esc>", opts)
+vim.keymap.set("v", "<Space>", "<Esc>", opts)
 
 vim.keymap.set("i", "jj", "<ESC>", opts)
 vim.keymap.set("i", "jk", "<ESC>:w<CR>", opts)
