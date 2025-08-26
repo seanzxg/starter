@@ -24,9 +24,10 @@ vim.keymap.set("v", "<Space>", "<Esc>", opts)
 
 vim.keymap.set("i", "jj", "<ESC>", opts)
 vim.keymap.set("i", "jk", "<ESC>:w<CR>", opts)
--- 保存文件
-map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
 
+-- 保存文件
+-- map({ "i", "x", "n", "s" }, "<D-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
+map({ "i", "x", "n", "s" }, "<D-s>", "<Esc>:w<CR>", { desc = "Save File" })
 
 -- 文件树快捷键 (使用 Snacks Explorer - 項目根目錄)
 vim.keymap.set("n", "<D-b>", function()
