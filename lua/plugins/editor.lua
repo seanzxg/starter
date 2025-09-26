@@ -1,88 +1,116 @@
-return {
-  {
+return {{
     "ggandor/flit.nvim",
-    enabled = false,
-  },
-  {
+    enabled = false
+}, {
     "ggandor/leap.nvim",
-    enabled = false,
-  },
-  {
+    enabled = false
+}, {
     "folke/flash.nvim",
     opts = {
-      modes = {
-        char = {
-          enabled = false, -- 禁用默认的 char 模式，这通常使用 s 键
+        modes = {
+            char = {
+                enabled = false -- 禁用默认的 char 模式，这通常使用 s 键
+            }
         },
-      },
-      label = {
-        uppercase = false,
-      },
+        label = {
+            uppercase = false
+        }
     },
     keys = { -- 明确禁用默认的 s 键
-      { "s", false },
-      { "S", false }, -- 设置我们想要的键位映射
-      { "t", false },
-      { "T", false }, -- 设置我们想要的键位映射
-      {
-        "f",
-        mode = { "n", "x", "o" },
-        function()
-          require("flash").jump({
-            search = { forward = true, wrap = false, multi_window = false },
-          })
-        end,
-        desc = "Flash Jump",
-      },
-      {
+    {
+        "s",
+        mode = {"n", "x", "o"},
+        false
+    }, {
+        "S",
+        mode = {"n", "x", "o"},
+        false
+    }, -- 设置我们想要的键位映射
+    {
         "t",
-        mode = { "n", "x", "o" },
-        function()
-          require("flash").jump({
-            search = { forward = false, wrap = false, multi_window = false },
-          })
-        end,
-        desc = "Flash Jump",
-      },
-      {
-        "F",
-        mode = { "n", "o", "x" },
-        function()
-          require("flash").treesitter()
-        end,
-        desc = "Flash Treesitter",
-      },
-      {
+        mode = {"n", "x", "o"},
+        false
+    }, {
         "T",
-        mode = { "o", "x" },
+        mode = {"n", "x", "o"},
+        false
+    }, -- 设置我们想要的键位映射
+    {
+        "f",
+        mode = {"n", "x", "o"},
         function()
-          require("flash").treesitter_search()
+            require("flash").jump({
+                search = {
+                    forward = true,
+                    wrap = false,
+                    multi_window = false
+                }
+            })
         end,
-        desc = "Treesitter Search",
-      },
-      {
+        desc = "Flash Jump"
+    }, {
+        "t",
+        mode = {"n", "x", "o"},
+        function()
+            require("flash").jump({
+                search = {
+                    forward = false,
+                    wrap = false,
+                    multi_window = false
+                }
+            })
+        end,
+        desc = "Flash Jump"
+    }, {
+        "F",
+        mode = {"n", "o", "x"},
+        function()
+            require("flash").treesitter()
+        end,
+        desc = "Flash Treesitter"
+    }, {
+        "T",
+        mode = {"o", "x"},
+        function()
+            require("flash").treesitter_search()
+        end,
+        desc = "Treesitter Search"
+    }, {
         "<c-s>",
-        mode = { "c" },
+        mode = {"c"},
         function()
-          require("flash").toggle()
+            require("flash").toggle()
         end,
-        desc = "Toggle Flash Search",
-      },
-    },
-  },
-  {
+        desc = "Toggle Flash Search"
+    }, {
+        "<cr>",
+        mode = {"n", "o", "x"},
+        function()
+            require("flash").treesitter({
+                actions = {
+                    ["<cr>"] = "next",
+                    ["<BS>"] = "prev"
+                }
+            })
+        end,
+        desc = "Treesitter Incremental Selection"
+    }, {
+        "<c-space>",
+        mode = {"n", "o", "x"},
+        false
+    }}
+}, {
 
-    "echasnovski/mini.surround",
+    "nvim-mini/mini.surround",
     opts = {
-      mappings = {
-        add = "sa", -- Add surrounding in Normal and Visual modes
-        delete = "sd", -- Delete surrounding
-        find = "sf", -- Find surrounding (to the right)
-        find_left = "sF", -- Find surrounding (to the left)
-        highlight = "sh", -- Highlight surrounding
-        replace = "sr", -- Replace surrounding
-        update_n_lines = "sn", -- Update `n_lines`
-      },
-    },
-  },
-}
+        mappings = {
+            add = "sa", -- Add surrounding in Normal and Visual modes
+            delete = "sd", -- Delete surrounding
+            find = "sf", -- Find surrounding (to the right)
+            find_left = "sF", -- Find surrounding (to the left)
+            highlight = "sh", -- Highlight surrounding
+            replace = "sr", -- Replace surrounding
+            update_n_lines = "sn" -- Update `n_lines`
+        }
+    }
+}}

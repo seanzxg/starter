@@ -49,20 +49,7 @@ function M.ai_line(ai_type)
 end
 
 return {{
-    "nvim-treesitter/nvim-treesitter",
-    opts = {
-        incremental_selection = {
-            enable = true,
-            keymaps = {
-                init_selection = "<cr>",
-                node_incremental = "<cr>",
-                scope_incremental = false,
-                node_decremental = "<bs>"
-            }
-        }
-    }
-}, {
-    "echasnovski/mini.ai",
+    "nvim-mini/mini.ai",
     opts = {
         mappings = {
             around_last = 'aN',
