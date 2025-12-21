@@ -7,13 +7,15 @@ return {{
 }, {
     "folke/flash.nvim",
     opts = {
+        labels = "abcdefghijklmnopqrstuvwxyz",
         modes = {
             char = {
                 enabled = false -- 禁用默认的 char 模式，这通常使用 s 键
             }
         },
         label = {
-            uppercase = false
+            uppercase = false,
+            exclude = "cdp"
         }
     },
     keys = { -- 明确禁用默认的 s 键

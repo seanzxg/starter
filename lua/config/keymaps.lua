@@ -27,7 +27,9 @@ vim.keymap.set("i", "jk", "<ESC>:w<CR>", opts)
 
 -- 保存文件
 -- map({ "i", "x", "n", "s" }, "<D-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
-map({ "i", "x", "n", "s" }, "<D-s>", "<Esc>:w<CR>", { desc = "Save File" })
+map({"i", "x", "n", "s"}, "<D-s>", "<Esc>:w<CR>", {
+    desc = "Save File"
+})
 
 -- 文件树快捷键 (使用 Snacks Explorer - 項目根目錄)
 vim.keymap.set("n", "<D-b>", function()
@@ -112,17 +114,17 @@ map("t", "<D-j>", "<cmd>close<cr>", {
 -- map("n", "m", "<cmd>bnext<cr>", opts)
 
 if vim.g.vscode then
-    -- vim.keymap.set('n', "M", "<Cmd>call VSCodeNotify('workbench.action.previousEditorInGroup')<CR>", opts)
-    -- vim.keymap.set('n', "m", "<Cmd>call VSCodeNotify('workbench.action.nextEditorInGroup')<CR>", opts)
-    
+    vim.keymap.set('n', "[b", "<Cmd>call VSCodeNotify('workbench.action.previousEditorInGroup')<CR>", opts)
+    vim.keymap.set('n', "]b", "<Cmd>call VSCodeNotify('workbench.action.nextEditorInGroup')<CR>", opts)
+
     -- vim.keymap.set('n', "M", "<Cmd>call VSCodeNotify('workbench.action.splitEditorDown')<CR>", opts)
     -- vim.keymap.set('n', "m", "<Cmd>call VSCodeNotify('workbench.action.splitEditorRight')<CR>", opts)
 
     vim.keymap.set('i', "<C-j>", "<Cmd>call VSCodeNotify('jumpToNextSnippetPlaceholder')<CR>", opts)
     vim.keymap.set('i', "<C-k>", "<Cmd>call VSCodeNotify('jumpToPrevSnippetPlaceholder')<CR>", opts)
-    
+
     vim.keymap.set('n', "<leader>.", "<Cmd>call VSCodeNotify('workbench.action.reloadWindow')<CR>", opts)
 end
 
-vim.keymap.set({ 'n', 'v' }, '<S-h>', '^', opts)
-vim.keymap.set({ 'n', 'v' }, '<S-l>', '$', opts)
+vim.keymap.set({'n', 'v'}, '<S-h>', '^', opts)
+vim.keymap.set({'n', 'v'}, '<S-l>', '$', opts)
