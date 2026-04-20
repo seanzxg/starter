@@ -1,8 +1,8 @@
 return {{
-    "ggandor/flit.nvim",
+    "https://codeberg.org/andyg/flit.nvim",
     enabled = false
 }, {
-    "ggandor/leap.nvim",
+    "https://codeberg.org/andyg/leap.nvim",
     enabled = false
 }, {
     "folke/flash.nvim",
